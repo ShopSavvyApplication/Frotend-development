@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopsavy - Read Reviews</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Custom CSS styles can be added here */
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">Shopsavy</a>
+        </nav>
+    </header>
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-6">
+                <h1>Read Reviews</h1>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-md-8">
+                <!-- Display reviews here -->
+                <div id="reviewList">
+                    <!-- Reviews will be dynamically added here using JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Sample review data (replace with real data)
+        const reviews = [
+            { username: 'User1', date: '2023-01-15', rating: 4, content: 'Great product!' },
+            { username: 'User2', date: '2023-02-10', rating: 5, content: 'I love it!' },
+            { username: 'User3', date: '2023-03-05', rating: 3, content: 'It's okay.' },
+            // Add more reviews here
+        ];
+
+        // Function to render reviews
+        function renderReviews(reviewList) {
+            const reviewContainer = document.getElementById('reviewList');
+            reviewContainer.innerHTML = ''; // Clear the existing content
+
+            reviewList.forEach(review => {
+                const reviewCard = document.createElement('div');
+                reviewCard.className = 'card mb-4';
+                reviewCard.innerHTML = `
+                    <div class="card-body">
+                        <h5 class="card-title">${review.username}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">${review.date}</h6>
+                        <p class="card-text">Rating: ${review.rating}</p>
+                        <p class="card-text">${review.content}</p>
+                    </div>
+                `;
+                reviewContainer.appendChild(reviewCard);
+            });
+        }
+
+        // Initial rendering of reviews
+        renderReviews(reviews);
+    </script>
+</body>
+</html>
