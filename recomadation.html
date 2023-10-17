@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopsavy - Personalized Cafe Recommendations</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Custom CSS styles can be added here */
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">Shopsavy</a>
+        </nav>
+    </header>
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-6">
+                <h1>Personalized Cafe Recommendations</h1>
+            </div>
+        </div>
+        <div class="row mt-4" id="recommendations">
+            <!-- Recommended cafes will be dynamically added here using JavaScript -->
+        </div>
+    </div>
+
+    <script>
+        // Sample personalized recommendation data (replace with real data)
+        const recommendations = [
+            { name: 'Cafe A', location: 'Location X', rating: 4.5, description: 'Cozy cafe with a great ambiance.' },
+            { name: 'Cafe B', location: 'Location Y', rating: 4.2, description: 'Perfect place for coffee lovers.' },
+            { name: 'Cafe C', location: 'Location Z', rating: 4.8, description: 'Delicious pastries and friendly staff.' },
+            // Add more cafe recommendations here
+        ];
+
+        // Function to render cafe recommendations
+        function renderRecommendations(recommendationList) {
+            const recommendationsContainer = document.getElementById('recommendations');
+            recommendationsContainer.innerHTML = ''; // Clear the existing content
+
+            recommendationList.forEach(cafe => {
+                const cafeCard = document.createElement('div');
+                cafeCard.className = 'col-md-4 mb-4';
+                cafeCard.innerHTML = `
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">${cafe.name}</h5>
+                            <p class="card-text">Location: ${cafe.location}</p>
+                            <p class="card-text">Rating: ${cafe.rating}</p>
+                            <p class="card-text">${cafe.description}</p>
+                        </div>
+                    </div>
+                `;
+                recommendationsContainer.appendChild(cafeCard);
+            });
+        }
+
+        // You can replace this with your actual recommendation algorithm
+        // This is a basic example that randomly selects cafe recommendations
+        function generatePersonalizedRecommendations() {
+            const personalizedRecommendations = recommendations.sort(() => 0.5 - Math.random()).slice(0, 3);
+            renderRecommendations(personalizedRecommendations);
+        }
+
+        // Initial rendering of personalized cafe recommendations
+        generatePersonalizedRecommendations();
+    </script>
+</body>
+</html>
