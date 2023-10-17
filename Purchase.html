@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopsavy - Make Purchase</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Custom CSS styles can be added here */
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">Shopsavy</a>
+        </nav>
+    </header>
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-6">
+                <h1>Make Purchase</h1>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-md-8">
+                <form id="purchaseForm">
+                    <div class="form-group">
+                        <label for="productName">Product Name:</label>
+                        <input type="text" class="form-control" id="productName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="quantity">Quantity:</label>
+                        <input type="number" class="form-control" id="quantity" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="totalPrice">Total Price:</label>
+                        <input type="text" class="form-control" id="totalPrice" readonly>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Place Order</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Function to calculate total price
+        function calculateTotalPrice() {
+            const productName = document.getElementById('productName').value;
+            const quantity = parseInt(document.getElementById('quantity').value);
+            
+            // Sample product price (replace with real product data)
+            const productPrice = 29.99; 
+            
+            // Calculate total price
+            const totalPrice = productPrice * quantity;
+
+            document.getElementById('totalPrice').value = `$${totalPrice.toFixed(2)}`;
+        }
+
+        // Event listener for form submission
+        document.getElementById('purchaseForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const productName = document.getElementById('productName').value;
+            const quantity = parseInt(document.getElementById('quantity').value);
+
+            // In a real application, you would implement payment processing here
+
+            alert(`Order placed for ${quantity} ${productName}(s)!`);
+        });
+
+        // Event listener for quantity change
+        document.getElementById('quantity').addEventListener('input', calculateTotalPrice);
+    </script>
+</body>
+</html>
